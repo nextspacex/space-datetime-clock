@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Time Clock</title>
+    <style>
+        body {
+            background: rgba(0, 0, 0, 0);
+        }
+
+        div {
+			font-size: 9vw;
+        }
+
+        div span {
+            color: #fff;
+            font-family: Microsoft JhengHei, sans-serif;
+            /*text-shadow: 0 0 12px #000, 0 0 8px #000, 0 0 4px #000, 0 0 2px #000;*/
+			text-shadow: 0 0 13px #000, 0 0 2px #000, 0 0 2px #000, 0px 0 2px #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span id="date"></span>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setInterval(function () {
+            showDate();
+        }, 200);
+
+        showDate();
+
+        function showDate() {
+            var d = new Date();
+
+            var dd = d.getDate();
+            var mm = d.getMonth() + 1;
+            var yyyy = d.getFullYear();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+
+            if (dd < 10) {
+                dd = "0" + dd;
+            }
+
+            if (mm < 10) {
+                mm = "0" + mm;
+            }
+
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            var today = `${dd}/${mm}/${yyyy}`;
+            var clockTime = `${hours}:${minutes}:${seconds}`;
+            var displayDate = document.getElementById('date');
+            displayDate.innerText = `${today} ${clockTime}`;
+        }
+    });
+</script>
+
+</html>
